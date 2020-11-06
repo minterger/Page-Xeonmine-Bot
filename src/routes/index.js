@@ -4,11 +4,15 @@ const app = express.Router();
 
 // Routes
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/index.html'));
+    res.render('index.html', { index: 'active', comandos: '', sobremi: '' });
   })
 
-app.get('/app', (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/account.html'));
+app.get('/comandos', (req, res) => {
+    res.render('comandos.html', { index: '', comandos: 'active', sobremi: '' });
+  })
+
+app.get('/sobremi', (req, res) => {
+    res.render('sobremi.html', { index: '', comandos: '', sobremi: 'active' });
   })
 
 module.exports = app;
