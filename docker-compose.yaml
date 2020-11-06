@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  node:
+    image: "node"
+    container_name: node-proyect
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - VIRTUAL_HOST=localhost.com
+    expose: 
+      - 4040
+    volumes:
+      - ./:/home/node/app
+    command: "npm start"
