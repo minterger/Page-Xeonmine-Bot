@@ -25,7 +25,7 @@
 .title {
     text-decoration: none;
     color: #000000;
-    margin-left: 10px;
+    margin-left: 25px;
     font-size: 1.5em;
 }
 .menu-items {
@@ -228,6 +228,10 @@
 }
 
 @media screen and (max-width: 545px) {
+
+    .title {
+        margin-left: 15px;
+    }
 
     .btn-menu {
         display: inline-flex;
