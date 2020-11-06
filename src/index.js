@@ -5,7 +5,7 @@ const app = express();
 const routes = require('./routes');
 
 //settings+
-app.set('port', 80);
+app.set('port', 4040);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
