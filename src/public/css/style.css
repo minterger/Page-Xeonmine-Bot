@@ -63,7 +63,7 @@
 
 .content-invite {
     grid-column: 1 / -1;
-    background-image: url(/img/tree.jpg);
+/*  background-image: url(/img/tree.jpg); */
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
