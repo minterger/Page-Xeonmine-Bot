@@ -10,7 +10,7 @@ $(document).ready(function() {
     $( "#menu" ).toggleClass( "menu2" ).toggleClass ( "menu1" );
     $( "#head" ).toggleClass( "header" );
     $( "#content" ).toggleClass( "content" );
-    $( ".bx" ).toggleClass( "bx-x" ).toggleClass ( "bx-menu" );
+    $( ".bxMenu" ).toggleClass( "bx-x" ).toggleClass ( "bx-menu" );
     return false;
   });
 
@@ -33,7 +33,29 @@ $(document).ready(function() {
   //       obj_top = obj_act_top;                  //almacenar scroll top anterior
   //   });
   // });
+  
+  const currentTheme = localStorage.getItem('theme');
+  console.log(currentTheme);
+  if (currentTheme === 'dark') {
+      document.body.classList.toggle('dark-theme');
+  } else if (currentTheme === 'white') {
+      document.body.classList.toggle('white-theme');
+  }
+  
+  const changeTheme = document.querySelector('.change-theme');
+  const matchMediaPrefers = window.matchMedia('(prefers-color-scheme: dark)');
 
+  changeTheme.addEventListener('click', () => {
+    let theme;
+    if (matchMediaPrefers.matches) {
+      document.body.classList.toggle('white-theme');
+      theme = document.body.classList.contains('white-theme')  ? 'white' : 'dark';  
+    } else {
+      document.body.classList.toggle('dark-theme');
+      theme = document.body.classList.contains('dark-theme') ? 'dark' : 'white';
+    }
+    localStorage.setItem('theme', theme)
+  });
 
   
 });

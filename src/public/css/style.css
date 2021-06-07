@@ -1,7 +1,55 @@
-* {
-    font-family: 'Roboto', sans-serif;
+
+body {
+    --color-text: #000000;
+    --color-items: #131313;
+    --color-bg-content: #FEFEFE;
+    --btn-active: #0000006b;
+    --btn-change: #8f8d8da6;
+    --color-bg: #ffffff;
+    --menu-dark: #5c6979;
 }
 
+body.dark-theme {
+    --color-text: #ffffff;
+    --color-items: #fcfbfb;
+    --color-bg-content: #1d232b;
+    --btn-active: #0000006b;
+    --btn-change: #0000006b;
+    --color-bg: #1d232b;
+    --menu-dark: #353e49;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+        --color-text: #ffffff;
+        --color-items: #fcfbfb;
+        --color-bg-content: #1d232b;
+        --btn-active: #0000006b;
+        --btn-change: #0000006b;
+        --color-bg: #1d232b;
+        --menu-dark: #353e49;
+    }
+    
+    body.white-theme {
+        --color-text: #000000;
+        --color-items: #131313;
+        --color-bg-content: #FEFEFE;
+        --btn-active: #0000006b;
+        --btn-change: #8f8d8da6;
+        --color-bg: #ffffff;
+        --menu-dark: #5c6979;
+    }
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-text);
+}
+
+body {
+    background-color: var(--color-bg);
+}
 
 .grid {
     display: grid;
@@ -11,7 +59,7 @@
 
 .head {
     grid-column: 1 / -1;
-    background-color: #ffffff;
+    background-color: var(--color-bg);
     display: flex;
     height: 3em;
     align-items: center;
@@ -24,7 +72,7 @@
 }
 .title {
     text-decoration: none;
-    color: #000000;
+    color: var(--color-text);
     margin-left: 25px;
     font-size: 1.5em;
 }
@@ -36,21 +84,22 @@
 .menu-items li {
     border-radius: 3px;
     margin: 0px 5px;
+    transition: all .4s;
 }
 .menu-items li a {
     text-decoration: none;
     padding: 7px 13px;
     font-size: .9em;
     display: block;
-    color: #131313;
+    color: var(--color-items);
 }
 .menu-items li:hover, li.active {
-    background-color: rgba(0, 0, 0, 0.418);
-    transition: .4s;
+    background-color: var(--btn-active);
+    transition: all .4s;
 
 }
 .btn-menu {
-    color: #131313;
+    color: var(--color-items);
     font-size: 2em;
     cursor: pointer;
     margin-right: 30px;
@@ -64,6 +113,7 @@
 .content-invite {
     grid-column: 1 / -1;
 /*  background-image: url(/img/tree.jpg); */
+    background-color: var(--color-bg-content);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -102,6 +152,10 @@
     margin: 10px 10px;
 }
 
+.content-invite .bx {
+    color: #fff;
+}
+
 .wave {
     z-index: 10;
     position: absolute;
@@ -116,7 +170,7 @@
     left: 0;
     border-width: 0 0 10vh 100vw;
     border-style: solid;
-    border-color: transparent transparent #fff transparent;
+    border-color: transparent transparent var(--color-bg-content) transparent;
 }
 .sesgoabajo1 {
     z-index: 10;
@@ -131,7 +185,8 @@
 
 .background-content-index {
     grid-column: 1 / -1;
-    background-color: #FEFEFE;
+    background-color: var(--color-bg-content);
+    width: 100%;
     min-height: 550px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -163,7 +218,7 @@
 
 .background-content {
     grid-column: 1 / -1;
-    background-color: #FEFEFE;
+    background-color: var(--color-bg-content);
     min-height: 550px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -193,6 +248,26 @@
     background-color: #191E34;
     color: #fff;
     font-size: 0.90em;
+}
+
+.change-theme {
+    position: fixed;
+    background-color: var(--btn-change);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    right: 15px;
+    bottom: 15px;
+    border: none;
+    border-radius: 100px;
+}
+.change-theme .bx {
+    font-size: 1.5rem;
+    transition: font-size .5s;
+}
+.change-theme:hover .bx{
+    transition: font-size .5s;
+    font-size: 1.7rem;
 }
 
 
@@ -241,7 +316,7 @@
         position: fixed;
         width: 100vw;
         height: calc(100% - 3em);
-        background-color: #414141;
+        background-color: var(--menu-dark);
         text-align: center;
         transition: all .4s;
         flex-direction: column;
@@ -254,7 +329,7 @@
         position: fixed;
         width: 100vw;
         height: calc(100% - 3em);
-        background-color: #414141;
+        background-color: var(--menu-dark);
         text-align: center;
         transition: all .4s;
         flex-direction: column;
@@ -262,6 +337,7 @@
         right: -30px;
         bottom: 0;
     }
+
     .menu-items li {
         margin: 30px 0 0 0;
         line-height: 30px;
